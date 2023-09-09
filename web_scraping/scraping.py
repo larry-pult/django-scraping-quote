@@ -33,13 +33,5 @@ def scrape_quotes(page=1):
 
 
 if __name__ == "__main__":
-    for i in range(1, 11):
-        quotes = scrape_quotes(i)
-        for quote in quotes:
-            if "quote" not in quote:
-                print("no quote:", quote)
-            if "author" not in quote:
-                print("no author:", quote)
-            if "tags" not in quote:
-                print("no tags:", quote)
-        print(quotes)
+    quotes = scrape_quotes(1)
+    print(quotes)
