@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    {% if quotes %}
+        {% for quote in quotes  %}
+            <hr>
+            <p>quote: {{ quote.quote }}</p>
+            <p>author:
+                <a href="{% url 'quote_by_author_id' quote.author.id %}">
+                    {{ quote.author }}
+                </a>
+            </p>
+            <p>tags:
+                {% for tag in quote.tags.all %}
+                    <a href="{% url 'quote_by_tag_id' tag.id %}">
+                        {{ tag.tag }}
+                    </a>
+                    {% if not forloop.last %}
+                        ,&nbsp;
+                    {% endif %}
+                {% endfor %}
+            </p>
+        {% endfor %}
+    {% endif %}
+    <hr>
+    <a href="{% url 'quote'%}">
+        list of all quotes
+    </a>
+    |
+    <a href="{% url 'author'%}">
+        list of all authors
+    </a>
+    |
+    <a href="{% url 'tag'%}">
+        list of all tags
+    </a>
+</body>
+</html>

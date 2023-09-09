@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>list of all tags:</h1>
+    {% if tags %}
+        {% for tag in tags %}
+            <li>
+                <a href="{% url 'quote_by_tag_id' tag.id %}">
+                    {{ tag }}
+                </a>
+            </li>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
